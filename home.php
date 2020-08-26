@@ -1,11 +1,3 @@
-<?php
-        
-        
-        // echo "<h1>Welcome to AroundTheWorld.com</h1>";
-        // echo "<h2>Hello, User!</h2>";
-        // echo "<h2> How can we help you?</h2>";
-         
- ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,15 +34,26 @@
         </div>
     </nav>
 
+
+    <?php
+        
+        echo "<center>";
+        echo "<h2>Welcome to AroundTheWorld.com</h2>";
+        echo "<h3>Hello, User!</h3>";
+        echo "</center>";
+        // echo "<h2> How can we help you?</h2>";
+         
+    ?>
+
 <div class="container">  
 <div class="row row-content">
 <div class="col">  
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <ul class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
+        </ul>
         <div class="carousel-inner">
             <div class="carousel-item active" >
             <img class="d-block w-100 " src="img/thirdimg.jpg" alt="First slide">
@@ -73,7 +76,8 @@
     </div>
     </div>
     </div>    
-</div>
+</div> 
+
         
     </body>
 </html>
