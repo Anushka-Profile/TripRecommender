@@ -1,49 +1,67 @@
-
+<?php
+        
+        // echo "<center>";
+        // echo "<h2>Welcome to AroundTheWorld.com</h2>";
+        // echo "<h3>Hello, User!</h3>";
+        // echo "</center>";
+        // echo "<h2> How can we help you?</h2>";
+         
+    ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Required meta tags always come first -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-        <!-- <link href="css/style.css" rel="stylesheet">  -->
-        
         <title>AroundTheWorld</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/style.css" rel="stylesheet">       
     </head>
     
     <body>
-    
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">AroundTheWorld</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">About </a>
-                <a class="nav-item nav-link" href="#">Contact </a>
-                </div>
+            <a class="navbar-brand mr-auto" href="#"><img src="img/logo.png" height="30" width="41"></a>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a href="#" class="nav-link"><span class="fa fa-home fa-lg"></span> Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-info fa-lg"></span> About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-list fa-lg"></span> Explore</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
+                </ul>
+                <span class="navbar-text">
+                    <a href="register.php" class="nav-link">
+                    <span class="fa fa-sign-in"></span> Login</a>
+                </span>
             </div>
         </div>
     </nav>
 
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm-6">
+                    <h1>Around The World</h1>
+                    <p>Welcome to Around The World travel community. Wherever you go, we have a place for you.</p>
+                </div>
+                <div class="col-12 col-sm-3 align-self-center">
+                    <img src="img/logo.png" class="img-fluid">
+                </div>
+                <!-- <div class="col-12 col-sm-3 align-self-center">
+                    <a role="button" class="btn btn-block d-sm-block nav-link btn-warning"
+                    id="reserveButton">Reserve Table</a>
+                </div> -->
+            </div>
+        </div>
+    </header>
 
-    <?php
-        
-        echo "<center>";
-        echo "<h2>Welcome to AroundTheWorld.com</h2>";
-        echo "<h3>Hello, User!</h3>";
-        echo "</center>";
-        // echo "<h2> How can we help you?</h2>";
-         
-    ?>
 
 <div class="container">  
 <div class="row row-content">
@@ -78,6 +96,14 @@
     </div>    
 </div> 
 
+<footer>
+    <div class="row justify-content-center">             
+        <div class="col-auto">
+            <p>© Copyright 2020 Around The World</p>
+            </div>
+        </div>
+    </div>
+</footer>
         
     </body>
 </html>
