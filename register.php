@@ -1,3 +1,75 @@
+<?php
+    $fnameErr =$lnameErr = $emailErr = $mobilenoErr = "";  
+    $firstname =$lastname = $email = $mobileno = $agree = "";
+    
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        if(!isset($_POST["firstname"])){
+            $fnameErr="This field is required";
+        }else{
+            $fname=input_data($_POST["firstname"]);
+            if(!preg_match("/^[a-zA-Z ]*$/",$fname)){
+                $fnameErr="Only alphabets and white space are allowed";
+            }
+        }
+
+        $first_name="user";
+        $first_value= $_POST["fname"];
+        setcookie($first_name, $first_value, time()+(86400),"/");
+
+        if(!isset($_POST["lastname"])){
+            $lnameErr="This field is required";
+        }else{
+            $lname=input_data($_POST["lastname"]);
+            if(!preg_match("/^[a-zA-Z ]*$/",$lname)){
+                $lnameErr="Only alphabets and white space are allowed";
+            }
+        }
+        
+        if (!isset($_POST["emailid"])) {  
+            $emailErr = "Email is required";  
+            } else {  
+            $email = input_data($_POST["emailid"]);  
+            // check that the e-mail address is well-formed  
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {  
+                $emailErr = "Invalid email format";  
+            }  
+        }
+        
+        if (!isset($_POST["telnum"])) {  
+            $mobilenoErr = "Mobile no is required";  
+        } else {  
+            $mobileno = input_data($_POST["telnum"]);  
+            // check if mobile no is well-formed  
+            if (!preg_match ("/^[0-9]*$/", $mobileno) ) {  
+            $mobilenoErr = "Only numeric value is allowed.";  
+            }  
+            //check mobile no length should not be less and greator than 10  
+            if (strlen ($mobileno) != 10) {  
+            $mobilenoErr = "Mobile no must contain 10 digits.";  
+            }  
+        }
+
+        if(empty($fnameErr) && empty($lnameErr) && empty($emailErr) && empty($mobilenoErr)){
+                header("Location: home.php");
+        }
+        // if (!isset($_POST['agree'])){  
+        //     $agreeErr = "Accept terms of services before submit.";  
+        // } else {  
+        //     $agree = input_data($_POST["agree"]);  
+        // }
+
+
+    
+    }  
+    
+    function input_data($data) {  
+        $data = trim($data);  
+        $data = stripslashes($data);  
+        $data = htmlspecialchars($data);  
+        return $data;  
+      } 
+    ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,23 +141,25 @@
 
         <div class="row row-content">
             <div class="col-12 col-md-9">
-                <form>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <div class="form-group row">
-                        <label for="firstname" class="col-md-2 col-form-label">First Name</label>
+                        <label for="firstname" class="col-md-2 col-form-label">First Name<span class="error">*</span></label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="firstname" name="firstname"
                             placeholder="First Name">
+                            <span class="error"><?php echo $fnameErr; ?></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="lastname" class="col-md-2 col-form-label">Last Name</label>
+                        <label for="lastname" class="col-md-2 col-form-label">Last Name<span class="error">*</span></label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="lastname" name="lastname"
                             placeholder="Last Name">
+                            <span class="error"><?php echo $lnameErr; ?> </span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="telnum" class="col-12 col-md-2 col-form-label">Contact Tel.</label>
+                        <label for="telnum" class="col-12 col-md-2 col-form-label">Contact Tel.<span class="error">*</span></label>
                         <div class="col-5 col-md-3">
                             <input type="tel" class="form-control" id="areacode" name="areacode"
                             placeholder="Area Code">
@@ -93,13 +167,16 @@
                         <div class="col-7 col-md-7">
                             <input type="tel" class="form-control" id="telnum" name="telnum"
                             placeholder="Tel. Number">
+                            <span class="error"> <?php echo $mobilenoErr; ?></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="emailid" class="col-md-2 col-form-label">Email</label>
+                        <label for="emailid" class="col-md-2 col-form-label">Email<span class="error">*</span> 
+                        </label>
                         <div class="col-md-10">
                             <input type="email" class="form-control" id="emailid" name="emailid"
                             placeholder="Email">
+                            <span class="error"> <?php echo $emailErr; ?> </span> 
                         </div>
                     </div>
                     <div class="form-group row">
@@ -132,143 +209,6 @@
              <div class="col-12 col-md">
             </div>
        </div>
-
-
-    <?php
-    $nameErr = $emailErr = $mobilenoErr = $genderErr = $locationErr= $ageErr = $agreeErr = "";  
-    $name = $email = $mobileno = $gender = $location = $age = $agree = "";
-    
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
-        if(isset($_POST["name"])){
-            $nameErr="Name is required";
-        }else{
-            $name=input_data($_POST["name"]);
-            if(!preg_match("/^[a-zA-Z ]*$/",$name)){
-                $nameErr="Only alphabets and white space are allowed";
-            }
-        }
-        
-        if (isset($_POST["email"])) {  
-            $emailErr = "Email is required";  
-            } else {  
-            $email = input_data($_POST["email"]);  
-            // check that the e-mail address is well-formed  
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {  
-                $emailErr = "Invalid email format";  
-            }  
-        }
-        
-        if (isset($_POST["mobileno"])) {  
-            $mobilenoErr = "Mobile no is required";  
-        } else {  
-            $mobileno = input_data($_POST["mobileno"]);  
-            // check if mobile no is well-formed  
-            if (!preg_match ("/^[0-9]*$/", $mobileno) ) {  
-            $mobilenoErr = "Only numeric value is allowed.";  
-            }  
-        //check mobile no length should not be less and greator than 10  
-            if (strlen ($mobileno) != 10) {  
-            $mobilenoErr = "Mobile no must contain 10 digits.";  
-            }  
-        }
-        
-
-        if(isset($_POST["location"])){
-            $locationErr="Location is required";
-        }else{
-            $name=input_data($_POST["location"]);
-            if(!preg_match("/^[a-zA-Z ]*$/",$name)){
-                $locationErr="Only alphabets and white space are allowed";
-            }
-        }
-        
-        if(isset($_POST["gender"])){
-            $genderErr="Gender is required";
-        }else{
-            $gender=input_dara($_POST["gender"]);
-        }
-
-        if(isset($_POST["age"])){
-            $ageErr="Age is required";
-        }else{
-            $age=input_dara($_POST["age"]);
-        }
-
-        if (!isset($_POST['agree'])){  
-            $agreeErr = "Accept terms of services before submit.";  
-        } else {  
-            $agree = input_data($_POST["agree"]);  
-        }
-    }  
-    
-    function input_data($data) {  
-        $data = trim($data);  
-        $data = stripslashes($data);  
-        $data = htmlspecialchars($data);  
-        return $data;  
-      } 
-    ?>
-
-      <center>
-          
-    <h2> Register here!</h2>
-    <span class="error">*required field</span>
-    <br><br>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    Name:
-    <input type="text" name="name" placeholder="Enter Full Name">
-    <span class="error">* <?php echo $nameErr; ?> </span>
-    <br><br>  
-    E-mail:   
-    <input type="text" name="email" placeholder="abc@gmail.com">  
-    <span class="error">* <?php echo $emailErr; ?> </span>  
-    <br><br>  
-    Mobile No:   
-    <input type="text" name="mobileno" placeholder="10 digit number">  
-    <span class="error">* <?php echo $mobilenoErr; ?> </span> 
-    <br><br> 
-    Home City:
-    <input type="text" name="location" placeholder="eg. Mumbai" >  
-    <span class="error">* <?php echo $locationErr; ?> </span>  
-    <br><br>
-    Age:
-    <input type="text" name="age">  
-    <span class="error">* <?php echo $ageErr; ?> </span>  
-    <br><br>
-    Gender:  
-    <input type="radio" name="gender" value="male"> Male  
-    <input type="radio" name="gender" value="female"> Female  
-    <input type="radio" name="gender" value="other"> Other  
-    <span class="error">* <?php echo $genderErr; ?> </span>  
-    <br><br>  
-    Agree to Terms of Service:  
-    <input type="checkbox" name="agree">  
-    <span class="error">* <?php echo $agreeErr; ?> </span>  
-    <br><br>                            
-    <input type="submit" name="submit" value="Submit">   
-    <br><br>                             
-</form> 
-    </center>
-
-<?php
-    if(isset($_POST['submit'])){
-        if($nameErr=="" && $emailErr=="" && $mobilenoErr = "" && $genderErr ="" && $locationErr="" && $ageErr = "" && $agreeErr = ""){
-            echo"<h3 color = #FF0001><b>You have sucessfully registered</b> </h3>";
-            echo "<h2>Your Input:</h2>";  
-        echo "Name: " .$name;  
-        echo "<br>";  
-        echo "Email: " .$email;  
-        echo "<br>";  
-        echo "Mobile No: " .$mobileno;  
-        echo "<br>";  
-        echo "Website: " .$website;  
-        echo "<br>";  
-        echo "Gender: " .$gender;  
-    } else {  
-        echo "<h3> <b>You didn't filled up the form correctly.</b> </h3>";  
-    }  
-    }  
-?>  
 
 </body>
 </html>

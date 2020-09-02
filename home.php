@@ -1,12 +1,12 @@
 <?php
-        
-        // echo "<center>";
-        // echo "<h2>Welcome to AroundTheWorld.com</h2>";
-        // echo "<h3>Hello, User!</h3>";
-        // echo "</center>";
-        // echo "<h2> How can we help you?</h2>";
-         
-    ?>
+    if(!isset($_COOKIE['user'])){
+        echo "Cookie named ".'user'." is not set.";
+    }else{
+        echo "Cookie named ".'user'." is set.<br>";
+        echo "FirstName of user is: ".$_COOKIE['user'];
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
