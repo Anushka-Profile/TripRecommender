@@ -1,6 +1,8 @@
 <?php
-    $fnameErr =$lnameErr = $emailErr = $mobilenoErr = "";  
-    $firstname =$lastname = $email = $mobileno = $agree = "";
+    session_start();
+
+    $fnameErr =$lnameErr = $emailErr = $mobilenoErr=$cpassErr=$passErr = "";  
+    $fname =$lname = $email = $mobileno = $agree =$cpass = $pass = "";
     
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         if(!isset($_POST["firstname"])){
@@ -13,7 +15,7 @@
         }
 
         $first_name="user";
-        $first_value= $_POST["fname"];
+        $first_value= $fname;
         setcookie($first_name, $first_value, time()+(86400),"/");
 
         if(!isset($_POST["lastname"])){
@@ -49,7 +51,33 @@
             }  
         }
 
-        if(empty($fnameErr) && empty($lnameErr) && empty($emailErr) && empty($mobilenoErr)){
+        if(!isset($_POST["pass"])){
+            $passErr="This field is required";
+        }else{
+            $pass=input_data($_POST["pass"]);
+            if(!preg_match("/^[a-zA-Z0-9@]*$/",$pass)){
+                $passErr="Only alphabets, @ and digits are allowed";
+            }
+            if (strlen ($pass) < 6) {  
+                $pass = "Password must contain atleast 6 characters.";  
+                } 
+        }
+
+        if(!isset($_POST["cpass"])){
+            $cpassErr="This field is required";
+        }else{
+            $cpass=input_data($_POST["cpass"]);
+            if ($pass!=$cpass){
+                $cpassErr="Re-enter password.";
+            }
+        }
+        
+        $_SESSION["email"]=$email;
+        $_SESSION["password"]=$pass;
+
+
+
+    if(empty($fnameErr) && empty($lnameErr) && empty($emailErr) && empty($mobilenoErr) && empty($passErr) && empty($cpassErr) ){
                 header("Location: home.php");
         }
         // if (!isset($_POST['agree'])){  
@@ -180,6 +208,24 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="pass" class="col-md-2 col-form-label">Password<span class="error">*</span> 
+                        </label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" id="pass" name="pass" maxlength="12"
+                            placeholder="Password(Min 6 characters)">
+                            <span class="error"> <?php echo $passErr; ?> </span> 
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cpass" class="col-md-2 col-form-label">Confirm Password<span class="error">*</span> 
+                        </label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" id="cpass" name="cpass" maxlength="12"
+                            placeholder="Confirm Password">
+                            <span class="error"> <?php echo $cpassErr; ?> </span> 
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-md-6 offset-md-2">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input"
@@ -209,6 +255,15 @@
              <div class="col-12 col-md">
             </div>
        </div>
+
+<footer>
+    <div class="row justify-content-center">             
+        <div class="col-auto">
+            <p>© Copyright 2020 Around The World</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
