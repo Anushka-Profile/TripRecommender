@@ -1,14 +1,3 @@
-<?php
-
-    session_start();
-    if(!isset($_COOKIE['user'])){
-        echo "Cookie named ".'user'." is not set.";
-    }else{
-        echo "Cookie named ".'user'." is set.<br>";
-        echo "FirstName of user is: ".$_COOKIE['user'];
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,26 +14,7 @@
     
     <body>
 
-    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mr-auto" href="#"><img src="img/logo.png" height="30" width="41"></a>
-            <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a href="#" class="nav-link"><span class="fa fa-home fa-lg"></span> Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-info fa-lg"></span> About</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-list fa-lg"></span> Explore</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
-                </ul>
-                <span class="navbar-text">
-                    <a href="register.php" class="nav-link">
-                    <span class="fa fa-sign-in"></span> Login</a>
-                </span>
-            </div>
-        </div>
-    </nav>
+    <?php include("header.php"); ?>
 
     <header class="jumbotron">
         <div class="container">
@@ -53,17 +23,9 @@
                     <h1>Around The World</h1>
                     <p>Welcome to Around The World travel community. Wherever you go, we have a place for you.</p>
                 </div>
-                <div class="col-12 col-sm-3 align-self-center">
-                    <img src="img/logo.png" class="img-fluid">
-                </div>
-                <!-- <div class="col-12 col-sm-3 align-self-center">
-                    <a role="button" class="btn btn-block d-sm-block nav-link btn-warning"
-                    id="reserveButton">Reserve Table</a>
-                </div> -->
             </div>
         </div>
     </header>
-
 
 <div class="container">  
 <div class="row row-content">
@@ -76,13 +38,13 @@
         </ul>
         <div class="carousel-inner">
             <div class="carousel-item active" >
-            <img class="d-block w-100 " src="img/thirdimg.jpg" alt="First slide">
+            <img class="d-block w-100 " src="img/homeBeach.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="img/secondimg.jpg" alt="Second slide">
+            <img class="d-block w-100" src="img/homeGoa.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="img/thirdimg.jpg" alt="Third slide">
+            <img class="d-block w-100" src="img/homeTaj.jpg" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -95,17 +57,71 @@
         </a>
     </div>
     </div>
-    </div>    
-</div> 
-
-<footer>
-    <div class="row justify-content-center">             
-        <div class="col-auto">
-            <p>© Copyright 2020 Around The World</p>
+    </div>   
+    
+    <div class="row row-content align-items-center">
+            <div class="col-12 col-sm-4 order-sm-last col-md-3">
+                <h3>Our Favorite Destination</h3>
+            </div>
+            <div class="col col-sm order-sm-first col-md">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail align-self-center"
+                            src="img/Kashmir2.jpg" alt="Kashmir">
+                    <div class="media-body">
+                        <h2 class="mt-0">The Heaven of Earth <span class="badge badge-danger">TRENDING</span> </h2>
+                        <p class="d-none d-sm-block">Kashmir, The Heaven of Earth, is one of the most beautiful places on this Earth. 
+                            It is situated in the state of Jammu and Kashmir and is also the place of Himalayan Ranges.There is absolutely nothing in 
+                            Kashmir which will fail to mesmerise you with its beauty.
+                         </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-        
+
+    <div class="row row-content align-items-center">
+            <div class="col-12 col-sm-4 col-md-3">
+                <h3>This Month's Promotions</h3>
+            </div>
+            <div class="col col-sm col-md">
+                <div class="media">
+                    <div class="media-body">
+                        <h2 class=" mt-0">One of the Ten Paradises of the World <span class="badge badge-danger">NEW</span></h2>
+                        <p class=" d-none d-sm-block">Situated in the tropics of Malabar Coast, it stands as a source of natural 
+                            beauty and greenery. Most of the parts of Kerala consists of lakes and water bodies. 
+                            The Backwater lake of Kerala is one of the best attraction of the place.</p>
+                    </div>    
+                    <img src="img/Kerala2.jpg" alt="Kerala" 
+                        class="d-flex ml-3 img-thumbnail align-self-center">
+                </div>                
+            </div>
+        </div>
+
+        <div class="row row-content align-items-center">
+            <div class="col-12 col-sm-4 order-sm-last col-md-3">
+                <h3>From Editor's Pocket</h3>
+            </div>
+            <div class="col col-sm order-sm-first col-md">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail align-self-center"
+                            src="img/Darjeeling2.jpg" alt="Darjeeling">
+                    <div class="media-body">
+                        <h2 class="mt-0">The Queen of Hills</h2>
+                        <h4>Darjeeling</h4>
+                        <p class="d-none d-sm-block">You can see this place in the Lesser Himalayas. 
+                            Its special characteristic is its tea garden which is also the main economic source of Darjeeling. 
+                            You can also find the world’s third highest mountain Kanchenjunga.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</div> 
+
+
+<?php include("footer1.html"); ?>
+
     </body>
 </html>

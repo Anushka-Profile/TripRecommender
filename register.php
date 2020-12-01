@@ -59,7 +59,7 @@
                 $passErr="Only alphabets, @ and digits are allowed";
             }
             if (strlen ($pass) < 6) {  
-                $pass = "Password must contain atleast 6 characters.";  
+                $passErr = "Password must contain atleast 6 characters.";  
                 } 
         }
 
@@ -72,15 +72,15 @@
             }
         }
         
+        $_SESSION["name"]=$fname;
         $_SESSION["email"]=$email;
         $_SESSION["password"]=$pass;
 
 
-
     if(empty($fnameErr) && empty($lnameErr) && empty($emailErr) && empty($mobilenoErr) && empty($passErr) && empty($cpassErr) ){
-                header("Location: home.php");
+                header("Location: sqldb.php");
         }
-        // if (!isset($_POST['agree'])){  
+        // if (!isset($_POST['agree'])){   
         //     $agreeErr = "Accept terms of services before submit.";  
         // } else {  
         //     $agree = input_data($_POST["agree"]);  
@@ -114,43 +114,18 @@
         .error{color: #FF0001;}   
     </style>
 </head>
+
 <body>
 
-<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mr-auto" href="#"><img src="img/logo.png" height="30" width="41"></a>
-            <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a href="home.php" class="nav-link"><span class="fa fa-home fa-lg"></span> Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-info fa-lg"></span> About</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-list fa-lg"></span> Explore</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
-                </ul>
-                <span class="navbar-text">
-                    <a href="register.php" class="nav-link">
-                    <span class="fa fa-sign-in"></span> Login</a>
-                </span>
-            </div>
-        </div>
-    </nav>
+<?php include("header.php"); ?>
 
-    <header class="jumbotron">
+<header class="jumbotron">
         <div class="container">
             <div class="row row-header">
                 <div class="col-12 col-sm-6">
                     <h1>Around The World</h1>
                     <p>Welcome to Around The World travel community. Wherever you go, we have a place for you.</p>
                 </div>
-                <div class="col-12 col-sm-3 align-self-center">
-                    <img src="img/logo.png" class="img-fluid">
-                </div>
-                <!-- <div class="col-12 col-sm-3 align-self-center">
-                    <a role="button" class="btn btn-block d-sm-block nav-link btn-warning"
-                    id="reserveButton">Reserve Table</a>
-                </div> -->
             </div>
         </div>
     </header>
@@ -169,7 +144,7 @@
 
         <div class="row row-content">
             <div class="col-12 col-md-9">
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label for="firstname" class="col-md-2 col-form-label">First Name<span class="error">*</span></label>
                         <div class="col-md-10">
@@ -226,6 +201,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="cpass" class="col-md-2 col-form-label">Select image to upload:</label>
+                        <div class="col-md-10">
+                            <input type="file" class="form-control" id="file" name="file" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-md-6 offset-md-2">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input"
@@ -245,25 +226,32 @@
                     
                     <div class="form-group row">
                         <div class="offset-md-2 col-md-10">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" name="Submit" value="Upload">
                                 Submit
                             </button>
                         </div>
                     </div>
                 </form>
-            </div>
-             <div class="col-12 col-md">
-            </div>
-       </div>
+                <?php 
+                    if(isset($_POST['Submit']))
+                    { 
+                    $filepath = "images/" . $_FILES["file"]["name"];
 
-<footer>
-    <div class="row justify-content-center">             
-        <div class="col-auto">
-            <p>© Copyright 2020 Around The World</p>
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $filepath)) 
+                    {
+                       echo "<img src=".$filepath." height=200 width=300 />";
+                    } 
+                    else 
+                    {
+                       echo "Error !!";
+                    }
+                    } 
+                ?>
             </div>
-        </div>
+        </div> 
     </div>
-</footer>
+
+    <?php include("footer1.html"); ?>
 
 </body>
 </html>
