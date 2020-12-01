@@ -152,16 +152,16 @@ if (isset($_POST['add'])){
         </ul>
         <div class="carousel-inner">
             <div class="carousel-item active" >
-            <img class="d-block w-100 " src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Desert/d2.jpg" alt="First slide">
+            <img class="d-block w-100 " src="https://images.unsplash.com/photo-1553913861-c0fddf2619ee?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZWd5cHR8ZW58MHwwfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="First slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Desert/d3.jpg" alt="Second slide">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1495833066942-79abe24b0c1f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTh8fGVneXB0fGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Second slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Desert/d4.jpg" alt="Third slide">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1504548840739-580b10ae7715?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8c2FuZHxlbnwwfDB8MHw%3D&auto=format&fit=crop&w=500&q=60" alt="Third slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Desert/d1.jpg" alt="Fifth slide">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1555930254-f837962bc58f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzV8fGVneXB0fGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Fifth slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

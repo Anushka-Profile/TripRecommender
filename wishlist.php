@@ -148,16 +148,16 @@ if (isset($_POST['add'])){
         </ul>
         <div class="carousel-inner">
             <div class="carousel-item active" >
-            <img class="d-block w-100 " src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Mountain/swiss1.jpg" alt="First slide">
+            <img class="d-block w-100 " src="https://images.unsplash.com/photo-1447110247212-4b3cd4e0881a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8bW91bnRhaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="First slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Mountain/swiss2.jpg" alt="Second slide">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1547823065-4cbbb2d4d185?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8bW91bnRhaW4lMjBmdWppfGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Second slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Mountain/mount1.jpg" alt="Third slide">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1491466424936-e304919aada7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8c2NlbmVyeXxlbnwwfDB8MHw%3D&auto=format&fit=crop&w=500&q=60" alt="Third slide">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="https://raw.githubusercontent.com/smart-girll/TripRecommender/master/img/Mountain/mt2.jpg" alt="Fourth slide">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1419064642531-e575728395f2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8c2NlbmVyeXxlbnwwfDB8MHw%3D&auto=format&fit=crop&w=500&q=60" alt="Fourth slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
